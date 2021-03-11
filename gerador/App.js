@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import Clipboard from 'expo-clipboard'
 
 import Slider from '@react-native-community/slider'
 
+let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
 export default function App() {
+  const [password, setPassword] = useState('')
+  const [size, setSize] = useState(5)
+
+  function generatePass() {
+    let pass = ''
+    for(let i = 0, n = charset.length; i < size; i++){
+      pass += charset.charAt(Math.floor(Math.random() * n))
+    }
+
+    setPassword(pass)
+  }
+
+  function copyPass() {
+    Clipboard.setString(password)
+    alert('Senha copiada com sucesso!')
+  }
+
   return (
     <View style={styles.container}>
       <Image 
@@ -11,7 +31,7 @@ export default function App() {
         style={styles.logo}
       />      
 
-      <Text style={styles.title}>12 Caracteres</Text>
+      <Text style={styles.title}>{size} Caracteres</Text>
 
       <View style={[{paddingVertical: 9}, styles.area]}>
         <Slider
@@ -20,16 +40,20 @@ export default function App() {
           maximumValue={15}
           minimumTrackTintColor="#F00"
           maximumTrackTintColor="#000"
+          value={size}
+          onValueChange={(valor) => setSize(valor.toFixed(0))}
         />
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={generatePass}>
         <Text style={styles.buttonText}>Gerar Senha</Text>
       </TouchableOpacity>
 
-      <View style={styles.area}>
-        <Text style={styles.password}>123123123123</Text>
-      </View>
+      {password !== '' && (
+        <View style={styles.area}>
+          <Text style={styles.password} onLongPress={copyPass}>{password}</Text>
+        </View>
+      )}
     </View>
   )
 }
