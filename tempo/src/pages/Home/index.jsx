@@ -1,105 +1,68 @@
-import React from 'react'
-import { SafeAreaView, Text, StyleSheet, FlatList } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { SafeAreaView, StyleSheet, FlatList, View, Text } from 'react-native'
+import * as Location from 'expo-location'
 
 import Menu from '../../components/Menu'
 import Header from '../../components/Header'
 import Conditions from '../../components/Conditions'
 import Forecast from '../../components/Forecast'
 
-const myList = [
-  {
-    "date": "11/03",
-    "weekday": "Qui",
-    "max": 27,
-    "min": 17,
-    "description": "Tempestades",
-    "condition": "storm"
-  },
-  {
-    "date": "12/03",
-    "weekday": "Sex",
-    "max": 28,
-    "min": 18,
-    "description": "Tempestades",
-    "condition": "clear_night"
-  },
-  {
-    "date": "13/03",
-    "weekday": "Sáb",
-    "max": 29,
-    "min": 18,
-    "description": "Ensolarado",
-    "condition": "clear_day"
-  },
-  {
-    "date": "14/03",
-    "weekday": "Dom",
-    "max": 29,
-    "min": 18,
-    "description": "Tempestades",
-    "condition": "cloudly_day"
-  },
-  {
-    "date": "15/03",
-    "weekday": "Seg",
-    "max": 28,
-    "min": 18,
-    "description": "Tempestades",
-    "condition": "cloudly_night"
-  },
-  {
-    "date": "16/03",
-    "weekday": "Ter",
-    "max": 28,
-    "min": 18,
-    "description": "Tempestades",
-    "condition": "rain"
-  },
-  {
-    "date": "17/03",
-    "weekday": "Qua",
-    "max": 28,
-    "min": 19,
-    "description": "Tempestades isoladas",
-    "condition": "storm"
-  },
-  {
-    "date": "18/03",
-    "weekday": "Qui",
-    "max": 27,
-    "min": 19,
-    "description": "Tempestades",
-    "condition": "cloud"
-  },
-  {
-    "date": "19/03",
-    "weekday": "Sex",
-    "max": 28,
-    "min": 20,
-    "description": "Tempestades",
-    "condition": "storm"
-  },
-  {
-    "date": "20/03",
-    "weekday": "Sáb",
-    "max": 28,
-    "min": 19,
-    "description": "Tempestades",
-    "condition": "storm"
-  }
-]
+import api, { key } from '../../services/api'
+import { conditionIcon } from '../../utils/condition'
 
 export default function Home() {
+  const [errorMsg, setErrorMsg] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [weather, setWeather] = useState([])
+  const [icon, setIcon] = useState({ name: 'cloud', color: '#fff' })
+  const [background, setBackground] = useState(['#1ed6ff', '#97c1ff'])  
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestPermissionsAsync()
+
+      if(status !== 'granted') {
+        setErrorMsg('Permissão para acessar localização negada')
+        setIsLoading(false)
+        return
+      }
+
+      let location = await Location.getCurrentPositionAsync({})
+      // console.warn(location.coords)
+
+      const response = await api.get(`/weather?key=${key}&lat=${location.coords.latitude}&lon=${location.coords.longitude}`)
+
+      setWeather(response.data)
+
+      if(response.data.results.currently === 'noite') {
+        setBackground(['#0c3741', '#0f2f61'])
+      }
+
+      const headerIcon = conditionIcon(response.data.results.condition_slug)
+      setIcon(headerIcon)
+
+      setIsLoading(false)
+    })() // método para usar funções assíncronas no useEffect com método de auto invocação
+  }, [])
+
+  if(isLoading) {
+    return (
+      <View style={styles.container}>
+        <Text style={{ fontSize: 17, fontStyle: 'italic' }}>Carregando dados...</Text>
+      </View>
+    )
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Menu />
-      <Header />
-      <Conditions />
+      <Header background={background} weather={weather} icon={icon} />
+      <Conditions weather={weather} />
       <FlatList 
         horizontal
         contentContainerStyle={{paddingBottom: '5%'}}
         style={styles.list}
-        data={myList}
+        data={weather.results.forecast}
         keyExtractor={item => item.date}
         renderItem={({ item }) => <Forecast data={item} /> }
       />

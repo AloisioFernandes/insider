@@ -1,4 +1,4 @@
-export function condition(condition) {
+function condition(condition) {
   switch(condition) {
     case 'storm': 
       return icon = {
@@ -43,6 +43,54 @@ export function condition(condition) {
       }
   }
 }
+
+function conditionIcon(condition) {
+  switch(condition) {
+    case 'storm': 
+      return icon = {
+        name: 'thunderstorm',
+        color: '#ffffff' 
+      }
+      break
+    case 'clear_day': 
+      return icon = {
+        name: 'sunny',
+        color: '#ffB300' 
+      }
+      break
+    case 'clear_night': 
+      return icon = {
+        name: 'moon',
+        color: '#ffffff' 
+      }
+      break
+    case 'cloudly_day': 
+      return icon = {
+        name: 'partly-sunny',
+        color: '#ffB300' 
+      }
+      break
+    case 'cloudly_night': 
+      return icon = {
+        name: 'cloudy-night',
+        color: '#ffffff' 
+      }
+      break
+    case 'rain': 
+      return icon = {
+        name: 'rainy',
+        color: '#ffffff' 
+      }
+      break
+    default: 
+      return icon = {
+        name: 'cloud',
+        color: '#ffffff' 
+      }
+  }
+}
+
+export { condition, conditionIcon }
 
 /*
 storm - tempestade 
