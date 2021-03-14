@@ -21,7 +21,7 @@ Projeto realizado durante o Evento React Native Insider 10/03/2021 - 13/03/2021 
 
     Instalar o Expo
     https://docs.expo.io/get-started/installation/
-# Primeiro passo - baixar o projeto
+## Primeiro passo - baixar o projeto
 Faça download do repositório acima ou use o seguinte comando na pasta onde deseja baixar o projeto:
  - git clone https://github.com/AloisioFernandes/insider.git
 
