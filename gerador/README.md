@@ -3,9 +3,9 @@ Projeto realizado durante o Evento React Native Insider 10/03/2021 - 13/03/2021 
 
 # Aplicativo
 <p align="center">
-  <img align="center" src="../github/Gerador Home.png" alt="Gerador Home" width="275" border="0">
-  <img align="center" src="../github/Gerador Password.png" alt="Gerador Password" width="275" border="0">
-  <img align="center" src="../github/Gerador Copy.png" alt="Gerador Copy" width="275" border="0">
+  <img align="center" src="../.github/Gerador Home.png" alt="Gerador Home" width="275" border="0">
+  <img align="center" src="../.github/Gerador Password.png" alt="Gerador Password" width="275" border="0">
+  <img align="center" src="../.github/Gerador Copy.png" alt="Gerador Copy" width="275" border="0">
 </p>
 
 # Funcionalidades

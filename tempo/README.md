@@ -3,21 +3,21 @@ Projeto realizado durante o Evento React Native Insider 10/03/2021 - 13/03/2021 
 
 # Splash Screen e Tela Inicial
 <p align="center">
-  <img align="center" src="../github/Tempo Splash.png" alt="Tempo Splash" width="275" border="0">
-  <img align="center" src="../github/Tempo Home Day.png" alt="Tempo Home Day" width="275" border="0">
-  <img align="center" src="../github/Tempo Home Night.png" alt="Tempo Home Night" width="275" border="0">
+  <img align="center" src="../.github/Tempo Splash.png" alt="Tempo Splash" width="275" border="0">
+  <img align="center" src="../.github/Tempo Home Day.png" alt="Tempo Home Day" width="275" border="0">
+  <img align="center" src="../.github/Tempo Home Night.png" alt="Tempo Home Night" width="275" border="0">
 </p>
 
 # Tela de Pesquisa
 <p align="center">
-  <img align="center" src="../github/Tempo Search.png" alt="Tempo Search" width="275" border="0">
-  <img align="center" src="../github/Tempo Result.png" alt="Tempo Result" width="275" border="0">
-  <img align="center" src="../github/Tempo Error.png" alt="Tempo Error" width="275" border="0">
+  <img align="center" src="../.github/Tempo Search.png" alt="Tempo Search" width="275" border="0">
+  <img align="center" src="../.github/Tempo Result.png" alt="Tempo Result" width="275" border="0">
+  <img align="center" src="../.github/Tempo Error.png" alt="Tempo Error" width="275" border="0">
 </p>
 
 # Menu Drawer
 <p align="center">
-  <img align="center" src="../github/Tempo Drawer.png" alt="Tempo Drawer" width="275" border="0">
+  <img align="center" src="../.github/Tempo Drawer.png" alt="Tempo Drawer" width="275" border="0">
 </p>
 
 # Funcionalidades

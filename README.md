@@ -3,13 +3,13 @@ Projetos realizados durante o Evento React Native Insider 10/03/2021 - 13/03/202
 
 # Aplicativos
 ## Gerador de Senhas
-[Acessar Gerador de Senhas](./gerador/README.md)
+[Acessar Gerador de Senhas](./gerador)
 <p align="center">
   <img align="center" src=".github/Gerador Home.png" alt="Gerador Home" width="275" border="0">
 </p>
 
 ## Previsão do Tempo
-[Acessar Previsão do Tempo](./tempo/README.md)
+[Acessar Previsão do Tempo](./tempo)
 <p align="center">
   <img align="center" src=".github/Tempo Home Day.png" alt="Tempo Home Day" width="275" border="0">
 </p>
